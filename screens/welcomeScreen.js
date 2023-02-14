@@ -14,7 +14,7 @@ export default class App extends Component {
   logout = async () => {
     await AsyncStorage.removeItem('token')
     console.log('Logout')
-    this.props.navigation.navigate('Login') 
+    this.props.navigation.navigate('Login')
   };
 
   render() {

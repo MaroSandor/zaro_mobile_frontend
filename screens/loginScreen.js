@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 import AsyncStorage, { useAsyncStorage } from '@react-native-async-storage/async-storage';
+import { StatusBar } from 'expo-status-bar';
 
 export default class Login extends Component {
     constructor(props) {
@@ -42,6 +43,7 @@ export default class Login extends Component {
     render() {
         return (
             <View style={styles.container}>
+                <StatusBar style='auto' />
                 <TextInput onChangeText={(value) => this.setState({ email: value })} placeholder='Username' />
                 <TextInput secureTextEntry onChangeText={(value) => this.setState({ password: value })} placeholder='Password' />
                 <Button
@@ -59,6 +61,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#fff'
+        backgroundColor: '#5a57ab'
     },
 });

@@ -1,21 +1,33 @@
+import React, { Component } from 'react';
+import { Animated, ScrollView, View, Text, StyleSheet, Dimensions } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import SplashScreen from './components/SplashScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-export default function App() {
-  return (
-    <SafeAreaProvider>
-      <SplashScreen />
-    </SafeAreaProvider>
-  );
+// screens
+import Home from './screens/welcomeScreen';
+import Login from './components/Login';
+
+const Stack = createNativeStackNavigator();
+
+export default class Content extends Component {
+    render() {
+        return (
+            <NavigationContainer style={styles.content}>
+                <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
+                    <Stack.Screen name="Home" component={Home} />
+                    <Stack.Screen name="Login" component={SplashScreen} />
+                </Stack.Navigator>
+            </NavigationContainer>
+        )
+    }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    content: {
+        flex: 1,
+        paddingTop: Dimensions.get('window').height * 0.33,
+        backgroundColor: '#5a57ab'
+    }
+})
